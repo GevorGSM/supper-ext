@@ -1,5 +1,9 @@
 # Supper-EXT
-Browser Extension with Collection of cool tools
+`Browser Extension with Collection of cool tools`
+
+<p align="center">
+  <img width="233" height="400" src="assets/icon.png">
+</p>
 
 ### Scroller
 This feature allow to save scroll position related to url,
