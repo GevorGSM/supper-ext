@@ -1,0 +1,10 @@
+node_modules
+npm-debug.log
+lerna-debug.log
+.env
+.idea/
+
+dist/
+out/
+e2e/fixtures.json
+coverage/
