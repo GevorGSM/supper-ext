@@ -10,5 +10,20 @@
   },
   "options_heading": {
     "message": "选项"
+  },
+  "options_hotkeys_link": {
+    "message": "编辑快捷键"
+  },
+  "options_save_button": {
+    "message": "储存"
+  },
+  "options_reset_button": {
+    "message": "重设"
+  },
+  "options_success_status": {
+    "message": "已储存。"
+  },
+  "options_activate_scroller": {
+    "message": "Scroller"
   }
 }

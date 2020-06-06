@@ -10,5 +10,20 @@
   },
   "options_heading": {
     "message": "Ընտրանքներ"
+  },
+  "options_hotkeys_link": {
+    "message": "Խմբագրել արագ արձագանքմքման նշանները"
+  },
+  "options_save_button": {
+    "message": "Պահպանել"
+  },
+  "options_reset_button": {
+    "message": "Մաքրել"
+  },
+  "options_success_status": {
+    "message": "Փոփոխություննորը պահպանվել են։"
+  },
+  "options_activate_scroller": {
+    "message": "Scroller"
   }
 }

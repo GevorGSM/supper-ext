@@ -25,7 +25,8 @@
   ],
   "background": {
     "scripts": [
-      "browser-polyfill.js"
+      "browser-polyfill.js",
+      "events.js"
     ],
     "persistent": false
   },
@@ -35,6 +36,13 @@
     "chrome_style": true
   },
   "commands": {
+    "scroller": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+S",
+        "mac": "Command+Shift+S"
+      },
+      "description": "Scroller On/Off"
+    }
   },
   "content_scripts": [
     {

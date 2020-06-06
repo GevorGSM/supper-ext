@@ -6,7 +6,7 @@
   },
   "scripts": {
     "build": "webpack --mode=production",
-    "watch": "webpack --watch --mode=development"
+    "start": "webpack --watch --mode=development"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",

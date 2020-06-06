@@ -10,5 +10,20 @@
   },
   "options_heading": {
     "message": "Opzioni"
+  },
+  "options_hotkeys_link": {
+    "message": "Modifica i tasti di scelta rapida"
+  },
+  "options_save_button": {
+    "message": "Salva"
+  },
+  "options_reset_button": {
+    "message": "Reset"
+  },
+  "options_success_status": {
+    "message": "Modifiche salvate."
+  },
+  "options_activate_scroller": {
+    "message": "Scroller"
   }
 }

@@ -1,0 +1,34 @@
+.label {
+  color: red;
+  font-size: 1em;
+  margin-top: 15px;
+  margin-bottom: 3px;
+}
+
+.buttons {
+  margin-top: 20px;
+}
+
+#save {
+  font-weight: bold;
+}
+
+.status {
+  margin: 15px;
+  font-weight: bold;
+  display: none;
+}
+
+.status.success {
+  color: #080;
+}
+
+.status.error {
+  color: red;
+}
+
+#hotkeys-link {
+  color: gray;
+  cursor: pointer;
+  text-decoration: underline;
+}

@@ -10,5 +10,20 @@
   },
   "options_heading": {
     "message": "Tùy Chọn"
+  },
+  "options_hotkeys_link": {
+    "message": "Chỉnh sửa phím tắt"
+  },
+  "options_save_button": {
+    "message": "Lưu"
+  },
+  "options_reset_button": {
+    "message": "Reset"
+  },
+  "options_success_status": {
+    "message": "Đã lưu lại."
+  },
+  "options_activate_scroller": {
+    "message": "Scroller"
   }
 }

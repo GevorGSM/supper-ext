@@ -10,5 +10,20 @@
   },
   "options_heading": {
     "message": "選項"
+  },
+  "options_hotkeys_link": {
+    "message": "編輯快捷鍵"
+  },
+  "options_save_button": {
+    "message": "儲存"
+  },
+  "options_reset_button": {
+    "message": "重新設定"
+  },
+  "options_success_status": {
+    "message": "已儲存。"
+  },
+  "options_activate_scroller": {
+    "message": "Scroller"
   }
 }

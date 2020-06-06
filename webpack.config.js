@@ -8,6 +8,7 @@ module.exports = (env, argv) => ({
     content: './src/content',
     popup: './src/popup',
     options: './src/options',
+    events: './src/background/events',
   },
   devtool: argv.mode === 'development' ? 'source-map' : '',
   output: {

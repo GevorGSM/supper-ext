@@ -10,5 +10,20 @@
   },
   "options_heading": {
     "message": "Configuración"
+  },
+  "options_hotkeys_link": {
+    "message": "Editar teclas de acceso directo"
+  },
+  "options_save_button": {
+    "message": "Guardar"
+  },
+  "options_reset_button": {
+    "message": "Reiniciar"
+  },
+  "options_success_status": {
+    "message": "Cambios guardados."
+  },
+  "options_activate_scroller": {
+    "message": "Scroller"
   }
 }
