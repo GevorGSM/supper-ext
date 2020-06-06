@@ -1,0 +1,36 @@
+.buttons {
+  min-width: 300px;
+}
+
+.section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  margin: 8px;
+  text-align: right;
+  font-size: 16px;
+  background: #f0f8f8;
+  color: #09a96e;
+}
+
+.button-1 {
+  cursor: pointer;
+  border: 2px outset;
+  border-radius: 5px;
+  background-color: #e4e4e4;
+  font-size: x-large;
+  color: #10d332;
+  padding: 3px;
+  text-shadow: 1px 1px white;
+}
+
+.button-1:hover {
+  color: #12b92f;
+}
+
+button, .button-1 {
+  border: none;
+  background: transparent;
+  outline: none;
+}

@@ -16,6 +16,7 @@ function initialize(settings) {
   saveBtn.click(function() {
     updateSettings({
       [SETTING_TYPES.scroller]: $('[name=scroller]:checked').val() === '1',
+      [SETTING_TYPES.partlyScreenShot]: $('[name=partlyScreenShot]:checked').val() === '1',
     }).then(function() {
         $('#save').prop('disabled', true);
         $('.status.success').show().delay(3000).fadeOut();
@@ -31,7 +32,7 @@ function initialize(settings) {
   });
 
   //dirty
-  $('input[name=scroller]').change(setDirty);
+  $('input[name=partlyScreenShot], input[name=scroller]').change(setDirty);
 
   setValuesBySetting(settings);
 
@@ -39,8 +40,9 @@ function initialize(settings) {
 }
 
 function setValuesBySetting(settings) {
-  $('[name=scroller]').prop('checked', false);
+  $('[name=scroller], [name=partlyScreenShot]').prop('checked', false);
   $('[name=scroller][value=' + (settings[SETTING_TYPES.scroller] ? '1' : '0') + ']').prop('checked', true);
+  $('[name=partlyScreenShot][value=' + (settings[SETTING_TYPES.partlyScreenShot] ? '1' : '0') + ']').prop('checked', true);
 }
 
 function setDirty() {

@@ -25,5 +25,14 @@
   },
   "options_activate_scroller": {
     "message": "Scroller"
+  },
+  "options_partly_screen_shot": {
+    "message": "Outline Blocks and ScreenShot them by DoubleClick (on/off)"
+  },
+  "options_scroller_hint": {
+    "message": "Scroller (on/off)"
+  },
+  "options_screen_shot_all": {
+    "message": "Take a page ScreenShot"
   }
 }

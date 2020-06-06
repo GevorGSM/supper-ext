@@ -1,3 +1,4 @@
+import { downloadScreenShot, startPartlyScreenShotMode, updateOutlineMode } from './tools/screenShot';
 import { brApi, REQUEST_TYPES, SETTING_TYPES } from './helpers/constants';
 import { startScroller, stopScroller } from './tools/scroller';
 import { getSettings } from './helpers/utils';
@@ -18,21 +19,26 @@ function onMessage(message, sender, sendResponse) {
       } else {
         stopScroller();
       }
+    } else if (settingName === SETTING_TYPES.partlyScreenShot) {
+      updateOutlineMode(value)
     }
+  } else if (message.type === REQUEST_TYPES.screenShot) {
+    downloadScreenShot(document.body);
   }
 }
-//
-// brApi.runtime.sendMessage({getOptions: true}, function(response) {
-//   console.log('Message Response', response);
-// });
 
 getSettings()
   .then(settings => {
     initialize(settings);
   });
 
-function initialize({ [SETTING_TYPES.scroller]: scroller } = {}) {
+function initialize({
+  [SETTING_TYPES.scroller]: scroller,
+  [SETTING_TYPES.partlyScreenShot]: partlyScreenShot,
+} = {}) {
   if (scroller) {
     startScroller();
   }
+
+  startPartlyScreenShotMode(partlyScreenShot);
 }
