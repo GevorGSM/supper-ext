@@ -15,6 +15,12 @@
     "default_title": "SupperExt Options",
     "default_popup": "popup.html"
   },
+  "omnibox": {
+    "keyword": "supperext"
+  },
+  "chrome_url_overrides": {
+    "newtab": "newTab.html"
+  },
   "permissions": [
     "activeTab",
     "tabs",
@@ -36,6 +42,11 @@
     "chrome_style": true
   },
   "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+L"
+      }
+    },
     "scroller": {
       "suggested_key": {
         "default": "Ctrl+Shift+S",
@@ -49,6 +60,13 @@
         "mac": "Command+Shift+P"
       },
       "description": "Partly ScreenSot On/Off"
+    },
+    "historyDetect": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+H",
+        "mac": "Command+Shift+H"
+      },
+      "description": "Detect History On/Off"
     }
   },
   "content_scripts": [
@@ -64,6 +82,18 @@
         "content.js"
       ],
       "run_at": "document_idle",
+      "all_frames": false
+    },
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "css": [],
+      "js": [
+        "browser-polyfill.js",
+        "history.js"
+      ],
+      "run_at": "document_end",
       "all_frames": false
     }
   ],

@@ -29,6 +29,9 @@
   "options_partly_screen_shot": {
     "message": "Outline Blocks and ScreenShot them by DoubleClick (on/off)"
   },
+  "options_history_detect": {
+    "message": "Detect History and write to other storage (on/off)"
+  },
   "options_scroller_hint": {
     "message": "Scroller (on/off)"
   },

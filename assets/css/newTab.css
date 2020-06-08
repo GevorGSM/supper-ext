@@ -1,0 +1,20 @@
+.url {
+  padding: 8px;
+  margin: 8px;
+  border: 1px solid #10d332;
+  border-radius: 5px;
+}
+
+.path {
+  margin: 6px;
+  color: #c9c9c9;
+}
+
+.content, .block {
+  padding: 4px;
+}
+
+.block {
+  background-color: aqua;
+  color: #0b0b0b;
+}
