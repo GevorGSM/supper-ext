@@ -43,5 +43,8 @@
   },
   "options_qr_generator_label": {
     "message": "Write text to generate QR"
+  },
+  "options_qr_scanner": {
+    "message": "Scan QR code or upload file (for now camera not allowed in extensions, need https protocol)"
   }
 }

@@ -3,16 +3,6 @@ import $ from 'jquery';
 
 import { brApi } from '../helpers/constants';
 
-function getTagItems() {
-  const canvas = $('#qrBlockCanvas ')[0];
-  const inputTag = $('input[name=qrGeneratingText]');
-
-  return {
-    canvas,
-    inputTag,
-  }
-}
-
 export function openQrGenerator() {
   brApi.tabs.query({'active': true, 'windowId': brApi.windows.WINDOW_ID_CURRENT},
     function(tabs){
@@ -25,6 +15,13 @@ export function openQrGenerator() {
       inputTag.change(onInputChange)
     }
   );
+}
+
+export function closeQrGenerator() {
+  $('#qrBlock').hide();
+  const { inputTag } = getTagItems();
+
+  inputTag.off('change', onInputChange);
 }
 
 function onInputChange() {
@@ -43,9 +40,12 @@ function showQR(canvas, input) {
   }
 }
 
-export function closeQrGenerator() {
-  $('#qrBlock').hide();
-  const { inputTag } = getTagItems();
+function getTagItems() {
+  const canvas = $('#qrBlockCanvas ')[0];
+  const inputTag = $('input[name=qrGeneratingText]');
 
-  inputTag.off('change', onInputChange);
+  return {
+    canvas,
+    inputTag,
+  }
 }

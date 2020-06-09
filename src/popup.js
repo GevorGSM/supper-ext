@@ -3,6 +3,7 @@ import $ from 'jquery'
 import { brApi, REQUEST_TYPES, SETTING_TYPES } from './helpers/constants';
 import { getSettings, setI18nText, updateSettings } from './helpers/utils';
 import { openQrGenerator, closeQrGenerator } from './tools/qrGenerator';
+import { startScanning, stopScanning } from './tools/qrScaner';
 
 getSettings()
   .then(settings => {
@@ -20,7 +21,9 @@ function initialize(settings) {
   };
 
   let isQrGeneratorOpen = false;
+  let isQrScannerOpen = false;
   $('#qrBlock').hide();
+  $('#qrScannerBlock').hide();
 
   function onMessage(message, sender, sendResponse) {
     if (message.type === REQUEST_TYPES.settingsChange) {
@@ -56,6 +59,17 @@ function initialize(settings) {
     }
   });
 
+  $('#qrScanner').click(() => {
+    isQrScannerOpen = !isQrScannerOpen;
+    switchToggleButton('#qrScanner', isQrScannerOpen);
+
+    if (isQrScannerOpen) {
+      startScanning();
+    } else {
+      stopScanning()
+    }
+  });
+
   addClickListenerForToggle('#scroller', currentValues, 'currentScrollerValue', SETTING_TYPES.scroller);
   addClickListenerForToggle('#partlyScreenShot', currentValues, 'currentPartlyScreenShotValue', SETTING_TYPES.partlyScreenShot);
   addClickListenerForToggle('#historyDetect', currentValues, 'currentHistoryDetectValue', SETTING_TYPES.historyDetect);
@@ -64,6 +78,7 @@ function initialize(settings) {
   switchToggleButton('#partlyScreenShot', settings[SETTING_TYPES.partlyScreenShot]);
   switchToggleButton('#historyDetect', settings[SETTING_TYPES.historyDetect]);
   switchToggleButton('#qrGenerator', isQrGeneratorOpen);
+  switchToggleButton('#qrScanner', isQrScannerOpen);
 }
 
 function switchToggleButton(container, value) {

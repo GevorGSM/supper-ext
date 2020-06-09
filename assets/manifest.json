@@ -27,7 +27,9 @@
     "tts",
     "storage",
     "ttsEngine",
-    "contextMenus"
+    "contextMenus",
+    "videoCapture",
+    "audioCapture"
   ],
   "background": {
     "scripts": [

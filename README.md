@@ -43,3 +43,10 @@ and show history in new tab
 
 ### QR code generator
 Generates QR code from input(default current tab url)
+
+---------------
+
+### QR code scanner
+allow to scan qr code from camera or fron uploaded file
+(now camera in extension popup not works.
+for camera we need https protocl, but we open it in popup)
