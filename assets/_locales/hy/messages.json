@@ -37,5 +37,11 @@
   },
   "options_screen_shot_all": {
     "message": "Take a page ScreenShot"
+  },
+  "options_qr_generator": {
+    "message": "Generate QR code"
+  },
+  "options_qr_generator_label": {
+    "message": "Write text to generate QR"
   }
 }

@@ -34,3 +34,8 @@ button, .button-1 {
   background: transparent;
   outline: none;
 }
+
+#qrBlock {
+  display: flex;
+  flex-direction: column;
+}

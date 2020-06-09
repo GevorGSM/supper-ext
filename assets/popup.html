@@ -47,6 +47,22 @@
 
             <div data-i18n="options_history_detect"></div>
         </div>
+
+        <div class="section">
+            <button id="qrGenerator">
+                <i class="material-icons button-1 toggle_off">check_box_outline_blank</i>
+                <i class="material-icons button-1 toggle_on">check_box</i>
+            </button>
+
+            <div data-i18n="options_qr_generator"></div>
+        </div>
+        <div id="qrBlock">
+            <label>
+                <span data-i18n="options_qr_generator_label"></span>
+                <input type="text" name="qrGeneratingText">
+            </label>
+            <canvas id="qrBlockCanvas"></canvas>
+        </div>
     </div>
 </body>
 </html>

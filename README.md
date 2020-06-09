@@ -38,3 +38,8 @@ activate browser new tab overriding
 The feature allow to save urls history in separate place,
  also show submitted form values(if have password input)
 and show history in new tab
+
+---------------
+
+### QR code generator
+Generates QR code from input(default current tab url)

@@ -2,6 +2,7 @@ import $ from 'jquery'
 
 import { brApi, REQUEST_TYPES, SETTING_TYPES } from './helpers/constants';
 import { getSettings, setI18nText, updateSettings } from './helpers/utils';
+import { openQrGenerator, closeQrGenerator } from './tools/qrGenerator';
 
 getSettings()
   .then(settings => {
@@ -17,6 +18,9 @@ function initialize(settings) {
     currentPartlyScreenShotValue: settings[SETTING_TYPES.partlyScreenShot],
     currentHistoryDetectValue: settings[SETTING_TYPES.historyDetect],
   };
+
+  let isQrGeneratorOpen = false;
+  $('#qrBlock').hide();
 
   function onMessage(message, sender, sendResponse) {
     if (message.type === REQUEST_TYPES.settingsChange) {
@@ -41,6 +45,17 @@ function initialize(settings) {
     });
   });
 
+  $('#qrGenerator').click(() => {
+    isQrGeneratorOpen = !isQrGeneratorOpen;
+    switchToggleButton('#qrGenerator', isQrGeneratorOpen);
+
+    if (isQrGeneratorOpen) {
+      openQrGenerator();
+    } else {
+      closeQrGenerator()
+    }
+  });
+
   addClickListenerForToggle('#scroller', currentValues, 'currentScrollerValue', SETTING_TYPES.scroller);
   addClickListenerForToggle('#partlyScreenShot', currentValues, 'currentPartlyScreenShotValue', SETTING_TYPES.partlyScreenShot);
   addClickListenerForToggle('#historyDetect', currentValues, 'currentHistoryDetectValue', SETTING_TYPES.historyDetect);
@@ -48,6 +63,7 @@ function initialize(settings) {
   switchToggleButton('#scroller', settings[SETTING_TYPES.scroller]);
   switchToggleButton('#partlyScreenShot', settings[SETTING_TYPES.partlyScreenShot]);
   switchToggleButton('#historyDetect', settings[SETTING_TYPES.historyDetect]);
+  switchToggleButton('#qrGenerator', isQrGeneratorOpen);
 }
 
 function switchToggleButton(container, value) {
@@ -63,7 +79,7 @@ function switchToggleButton(container, value) {
 function addClickListenerForToggle(selector, currentValues, key, settingType) {
   $(selector).click(() => {
     currentValues[key] = !currentValues[key];
-    switchToggleButton('#historyDetect', currentValues[key]);
+    switchToggleButton(selector, currentValues[key]);
     updateSettings({[settingType]: currentValues[key]})
       .then(() => {
         const message = {
