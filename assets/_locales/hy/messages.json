@@ -46,5 +46,38 @@
   },
   "options_qr_scanner": {
     "message": "Scan QR code or upload file (for now camera not allowed in extensions, need https protocol)"
+  },
+  "context_read_selection": {
+    "message": "SupperExt կարդալ ընտրված տեքստը"
+  },
+  "error_no_voice": {
+    "message": "Տրված լեզուն չի սպասարկվում '{lang}'"
+  },
+  "languages_heading": {
+    "message": "Ընտրել լեզու"
+  },
+  "options_rate_label": {
+    "message": "Արագություն"
+  },
+  "options_rate_warning": {
+    "message": "Զգուշացում: որոշ ձայներ կարող են չհնչել բարձր արագության դեպքում."
+  },
+  "options_pitch_label": {
+    "message": "Pitch"
+  },
+  "options_volume_label": {
+    "message": "Ձայնի Բարձրություն"
+  },
+  "options_voice_label": {
+    "message": "Ձայն"
+  },
+  "options_voicegroup_standard": {
+    "message": "Ստանդարտ"
+  },
+  "options_voicegroup_premium": {
+    "message": "Պրեմիում"
+  },
+  "options_translation_language_label": {
+    "message": "Թարգմանուրյան լեզու"
   }
 }

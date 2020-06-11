@@ -32,3 +32,10 @@
   cursor: pointer;
   text-decoration: underline;
 }
+
+#rate-edit-button {
+  margin-left: 6px;
+  font-size: 12px;
+  color: gray;
+  cursor: pointer;
+}

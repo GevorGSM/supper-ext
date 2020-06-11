@@ -46,5 +46,38 @@
   },
   "options_qr_scanner": {
     "message": "Scan QR code or upload file (for now camera not allowed in extensions, need https protocol)"
+  },
+  "context_read_selection": {
+    "message": "SupperExt read selected text"
+  },
+  "error_no_voice": {
+    "message": "Language not supported '{lang}'"
+  },
+  "languages_heading": {
+    "message": "Select Languages"
+  },
+  "options_rate_label": {
+    "message": "Speed"
+  },
+  "options_rate_warning": {
+    "message": "Note: some voices may not work at a high speed."
+  },
+  "options_pitch_label": {
+    "message": "Pitch"
+  },
+  "options_volume_label": {
+    "message": "Volume"
+  },
+  "options_voice_label": {
+    "message": "Voice"
+  },
+  "options_voicegroup_standard": {
+    "message": "Standard Voices"
+  },
+  "options_voicegroup_premium": {
+    "message": "Premium Voices"
+  },
+  "options_translation_language_label": {
+    "message": "Translation Language _"
   }
 }

@@ -46,5 +46,38 @@
   },
   "options_qr_scanner": {
     "message": "Scan QR code or upload file (for now camera not allowed in extensions, need https protocol)"
+  },
+  "context_read_selection": {
+    "message": "朗讀所選文字"
+  },
+  "error_no_voice": {
+    "message": "不支持語言 '{lang}'"
+  },
+  "languages_heading": {
+    "message": "選擇語言"
+  },
+  "options_rate_label": {
+    "message": "朗讀速度"
+  },
+  "options_rate_warning": {
+    "message": "注意：有些聲音可能無法高速運行。"
+  },
+  "options_pitch_label": {
+    "message": "朗讀聲調"
+  },
+  "options_volume_label": {
+    "message": "朗讀音量"
+  },
+  "options_voice_label": {
+    "message": "朗讀語音"
+  },
+  "options_voicegroup_standard": {
+    "message": "標準的聲音"
+  },
+  "options_voicegroup_premium": {
+    "message": "優質的聲音"
+  },
+  "options_translation_language_label": {
+    "message": "Translation Language"
   }
 }

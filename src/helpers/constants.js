@@ -4,12 +4,22 @@ export const SETTING_TYPES = {
   scroller: 'SCROLLER',
   partlyScreenShot: 'PARTLY_SCREEN_SHOT',
   historyDetect: 'HISTORY_DETECT',
+  voiceRate: 'VOICE_RATE',
+  voicePitch: 'VOICE_PITCH',
+  voiceVolume: 'VOICE_VOLUME',
+  voiceLang: 'VOICE_LANGUAGE',
+  voiceName: 'VOICE_NAME',
 };
 
 export const SETTING_NAMES = [
   SETTING_TYPES.scroller,
   SETTING_TYPES.partlyScreenShot,
   SETTING_TYPES.historyDetect,
+  SETTING_TYPES.voiceRate,
+  SETTING_TYPES.voicePitch,
+  SETTING_TYPES.voiceVolume,
+  SETTING_TYPES.voiceLang,
+  SETTING_TYPES.voiceName,
 ];
 
 export const PROJECT_PREFIX = 'SUPPER_EXT';
@@ -25,3 +35,14 @@ export const REQUEST_TYPES = {
 export const openLastPagesMatcher = /open [0-9]+/gi;
 
 export const numberMatcher = /[0-9]+/gi;
+
+export const defaultTTSConfig = {
+  serviceUrl: 'https://support.lsdsoftware.com',
+  rate: 1.0,
+  pitch: 1.0,
+  volume: 1.0,
+  voiceName: 'Karen',
+  showHighlighting: 0,
+  language: 'en',
+  translationLanguage: 'hy',
+};

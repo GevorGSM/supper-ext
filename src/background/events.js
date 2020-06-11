@@ -7,6 +7,21 @@ import {
   brApi
 } from '../helpers/constants';
 import { getSettings, updateSettings } from '../helpers/utils';
+import { readText } from '../tools/tts';
+
+brApi.runtime.onInstalled.addListener(function() {
+  brApi.contextMenus.create({
+    id: 'read-selection',
+    title: brApi.i18n.getMessage('context_read_selection'),
+    contexts: ['selection']
+  });
+});
+
+brApi.contextMenus.onClicked.addListener(function(info, tab) {
+  if (info.menuItemId === 'read-selection') {
+    readText(info.selectionText)
+  }
+});
 
 brApi.commands.onCommand.addListener(function(command) {
   if (command === 'scroller') {

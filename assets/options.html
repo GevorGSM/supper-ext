@@ -24,6 +24,42 @@
     <label><input type="radio" name="historyDetect" value="1" />On</label>
     <label><input type="radio" name="historyDetect" value="0" />Off</label>
 
+    <div class="label">
+        <span data-i18n="languages_heading"></span>
+        <select id="languages">
+            <option value="">Auto select</option>
+        </select>
+    </div>
+
+    <div class="label">
+        <span data-i18n="options_voice_label"></span>
+        <select id="voices">
+            <option value="">Auto select</option>
+        </select>
+    </div>
+
+    <div class="label">
+        <span data-i18n="options_rate_label"></span>
+        <i id="rate-edit-button" class="material-icons">mode_edit</i>
+    </div>
+    <div class="slider">
+        <input id="rate" name="rate" type="range" min="-1" max="1" step="0.05">
+    </div>
+    <div id="rate-input-div">
+        <input id="rate-input" type="text" maxlength="5" />x
+    </div>
+    <div id="rate-warning" class="warning" data-i18n="options_rate_warning"></div>
+
+    <div class="label" data-i18n="options_pitch_label"></div>
+    <div class="slider">
+        <input id="pitch" name="pitch" type="range" min="0" max="2" step="0.05">
+    </div>
+
+    <div class="label" data-i18n="options_volume_label"></div>
+    <div class="slider">
+        <input id="volume" name="volume" type="range" min="0" max="1" step="0.025">
+    </div>
+
     <div class="buttons">
         <button id="save" data-i18n="options_save_button"></button>
         <button id="reset" data-i18n="options_reset_button"></button>

@@ -46,5 +46,38 @@
   },
   "options_qr_scanner": {
     "message": "Scan QR code or upload file (for now camera not allowed in extensions, need https protocol)"
+  },
+  "context_read_selection": {
+    "message": "Đọc"
+  },
+  "error_no_voice": {
+    "message": "Ngôn ngữ không được hỗ trợ '{lang}'"
+  },
+  "languages_heading": {
+    "message": "Chọn ngôn ngữ"
+  },
+  "options_rate_label": {
+    "message": "Tốc độ đọc"
+  },
+  "options_rate_warning": {
+    "message": "Lưu ý: một số tiếng nói có thể không hoạt động ở tốc độ cao."
+  },
+  "options_pitch_label": {
+    "message": "Giọng cao/thấp"
+  },
+  "options_volume_label": {
+    "message": "Volume"
+  },
+  "options_voice_label": {
+    "message": "Giọng đọc"
+  },
+  "options_voicegroup_standard": {
+    "message": "Các giọng chuẩn"
+  },
+  "options_voicegroup_premium": {
+    "message": "Các giọng chất lượng cao"
+  },
+  "options_translation_language_label": {
+    "message": "Translation Language"
   }
 }

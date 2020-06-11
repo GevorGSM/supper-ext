@@ -47,6 +47,13 @@ Generates QR code from input(default current tab url)
 ---------------
 
 ### QR code scanner
-allow to scan qr code from camera or fron uploaded file
+allow to scan qr code from camera or from uploaded file
 (now camera in extension popup not works.
-for camera we need https protocl, but we open it in popup)
+for camera we need https protocol, but we open it in popup)
+
+---------------
+
+### text reader
+read text by selecting and using contextMenu item click.
+Ability to choice language, voice, rate, pitch, volume
+
