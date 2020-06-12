@@ -9,6 +9,7 @@ export const SETTING_TYPES = {
   voiceVolume: 'VOICE_VOLUME',
   voiceLang: 'VOICE_LANGUAGE',
   voiceName: 'VOICE_NAME',
+  recognitionLanguage: 'RECOGNITION_LANGUAGE',
 };
 
 export const SETTING_NAMES = [
@@ -30,6 +31,7 @@ export const REQUEST_TYPES = {
   settingsChange: 'settings_change',
   screenShot: 'screen_shot',
   formSubmit: 'formSubmit',
+  okGoogle: 'okGoogle',
 };
 
 export const openLastPagesMatcher = /open [0-9]+/gi;
@@ -45,4 +47,5 @@ export const defaultTTSConfig = {
   showHighlighting: 0,
   language: 'en',
   translationLanguage: 'hy',
+  recognitionLanguage: 'en-US'
 };

@@ -25,12 +25,12 @@ When user write in url `supperext` and press tab, after he can execute command
  last pageCount pages in extension history)
 ---------------
 
-### newTab override
-activate browser new tab overriding 
+### NewTab override
+Activate browser new tab overriding 
 
 ---------------
 
-### open extension by `Ctrl+Shift+L` hot Keys
+### Open extension by `Ctrl+Shift+L` hot Keys
 
 ---------------
 
@@ -47,13 +47,18 @@ Generates QR code from input(default current tab url)
 ---------------
 
 ### QR code scanner
-allow to scan qr code from camera or from uploaded file
+Allow to scan qr code from camera or from uploaded file
 (now camera in extension popup not works.
 for camera we need https protocol, but we open it in popup)
 
 ---------------
 
-### text reader
-read text by selecting and using contextMenu item click.
-Ability to choice language, voice, rate, pitch, volume
+### Text reader
+Read text by selecting and using contextMenu item click.
+Ability to choice language, voice, rate, pitch, volume from Options
 
+
+---------------
+
+### OK Google
+Use Speech Recognition to redirect google search

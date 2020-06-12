@@ -4,7 +4,7 @@ import $ from 'jquery';
 import { brApi } from '../helpers/constants';
 
 export function openQrGenerator() {
-  brApi.tabs.query({'active': true, 'windowId': brApi.windows.WINDOW_ID_CURRENT},
+  brApi.tabs.query({active: true, windowId: brApi.windows.WINDOW_ID_CURRENT},
     function(tabs){
       $('#qrBlock').show();
 

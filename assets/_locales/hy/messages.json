@@ -79,5 +79,11 @@
   },
   "options_translation_language_label": {
     "message": "Թարգմանուրյան լեզու"
+  },
+  "recognition_languages": {
+    "message": "Recognition Language"
+  },
+  "options_ok_google": {
+    "message": "OK Google"
   }
 }

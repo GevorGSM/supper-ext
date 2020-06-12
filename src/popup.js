@@ -1,6 +1,6 @@
 import $ from 'jquery'
 
-import { brApi, REQUEST_TYPES, SETTING_TYPES } from './helpers/constants';
+import { brApi, defaultTTSConfig, REQUEST_TYPES, SETTING_TYPES } from './helpers/constants';
 import { getSettings, setI18nText, updateSettings } from './helpers/utils';
 import { openQrGenerator, closeQrGenerator } from './tools/qrGenerator';
 import { startScanning, stopScanning } from './tools/qrScaner';
@@ -38,8 +38,19 @@ function initialize(settings) {
     }
   }
 
+  $('#okGoogle').click(function () {
+    $('#okGoogle .shadow').toggleClass('listening');
+    brApi.tabs.query({ active: true, windowId: brApi.windows.WINDOW_ID_CURRENT }, function(tabs) {
+      const message = {
+        type: REQUEST_TYPES.okGoogle,
+        data: settings[SETTING_TYPES.recognitionLanguage] || defaultTTSConfig.recognitionLanguage,
+      };
+      brApi.tabs.sendMessage(tabs[0].id, message);
+    });
+  });
+
   $('#screenShot').click(() => {
-    brApi.tabs.query({ active: true }, function(tabs) {
+    brApi.tabs.query({ active: true, windowId: brApi.windows.WINDOW_ID_CURRENT }, function(tabs) {
       const message = {
         type: REQUEST_TYPES.screenShot,
         data: null,

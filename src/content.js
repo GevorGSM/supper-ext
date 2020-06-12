@@ -1,9 +1,12 @@
 import { downloadScreenShot, startPartlyScreenShotMode, updateOutlineMode } from './tools/screenShot';
 import { brApi, REQUEST_TYPES, SETTING_TYPES } from './helpers/constants';
+import { initRecognition, okGoogle } from './tools/speechRecognition';
 import { startScroller, stopScroller } from './tools/scroller';
 import { getSettings } from './helpers/utils';
 
 brApi.runtime.onMessage.addListener(onMessage);
+
+let isSpeechInitialized = false;
 
 function onMessage(message, sender, sendResponse) {
   console.log(sender.tab ?
@@ -24,6 +27,13 @@ function onMessage(message, sender, sendResponse) {
     }
   } else if (message.type === REQUEST_TYPES.screenShot) {
     downloadScreenShot(document.body);
+  } else if (message.type === REQUEST_TYPES.okGoogle) {
+    if (!isSpeechInitialized) {
+      initRecognition(message.data);
+      isSpeechInitialized = true;
+    }
+
+    okGoogle();
   }
 }
 
