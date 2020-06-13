@@ -1,4 +1,5 @@
 import { downloadScreenShot, startPartlyScreenShotMode, updateOutlineMode } from './tools/screenShot';
+import { getSubtitleOpenState, toggleRecognition } from './tools/subtitle';
 import { brApi, REQUEST_TYPES, SETTING_TYPES } from './helpers/constants';
 import { initRecognition, okGoogle } from './tools/speechRecognition';
 import { startScroller, stopScroller } from './tools/scroller';
@@ -34,6 +35,12 @@ function onMessage(message, sender, sendResponse) {
     }
 
     okGoogle();
+  } else if (message.type === REQUEST_TYPES.getSubtitleState) {
+    sendResponse({ isSubtitleOpen: `${getSubtitleOpenState()}` });
+    return true;
+    // for firefox return Promise.resolve({ isSubtitleOpen: getSubtitleOpenState() })
+  } else if (message.type === REQUEST_TYPES.toggleSubtitleState) {
+    toggleRecognition(message.data);
   }
 }
 

@@ -18,8 +18,10 @@ function initialize(settings) {
     currentScrollerValue: settings[SETTING_TYPES.scroller],
     currentPartlyScreenShotValue: settings[SETTING_TYPES.partlyScreenShot],
     currentHistoryDetectValue: settings[SETTING_TYPES.historyDetect],
+    subtitleOpen: false,
   };
 
+  initSubtitle(currentValues);
   let isQrGeneratorOpen = false;
   let isQrScannerOpen = false;
   $('#qrBlock').hide();
@@ -81,6 +83,19 @@ function initialize(settings) {
     }
   });
 
+  $('#subtitleOpen').click(() => {
+    currentValues.subtitleOpen = !currentValues.subtitleOpen;
+    switchToggleButton('#subtitleOpen', currentValues.subtitleOpen);
+
+    brApi.tabs.query({ active: true, windowId: brApi.windows.WINDOW_ID_CURRENT }, function(tabs) {
+      const message = {
+        type: REQUEST_TYPES.toggleSubtitleState,
+        data: settings[SETTING_TYPES.recognitionLanguage] || defaultTTSConfig.recognitionLanguage,
+      };
+      brApi.tabs.sendMessage(tabs[0].id, message);
+    });
+  });
+
   addClickListenerForToggle('#scroller', currentValues, 'currentScrollerValue', SETTING_TYPES.scroller);
   addClickListenerForToggle('#partlyScreenShot', currentValues, 'currentPartlyScreenShotValue', SETTING_TYPES.partlyScreenShot);
   addClickListenerForToggle('#historyDetect', currentValues, 'currentHistoryDetectValue', SETTING_TYPES.historyDetect);
@@ -88,6 +103,7 @@ function initialize(settings) {
   switchToggleButton('#scroller', settings[SETTING_TYPES.scroller]);
   switchToggleButton('#partlyScreenShot', settings[SETTING_TYPES.partlyScreenShot]);
   switchToggleButton('#historyDetect', settings[SETTING_TYPES.historyDetect]);
+  switchToggleButton('#subtitleOpen', currentValues.subtitleOpen);
   switchToggleButton('#qrGenerator', isQrGeneratorOpen);
   switchToggleButton('#qrScanner', isQrScannerOpen);
 }
@@ -122,5 +138,22 @@ function addClickListenerForToggle(selector, currentValues, key, settingType) {
           }
         });
       });
+  });
+}
+
+function initSubtitle(currentValues) {
+  brApi.tabs.query({ active: true, windowId: brApi.windows.WINDOW_ID_CURRENT }, function(tabs) {
+    const message = {
+      type: REQUEST_TYPES.getSubtitleState,
+      data: null,
+    };
+
+    // for chrome only, with firefox we need to use promise.then
+    brApi.tabs.sendMessage(tabs[0].id, message, {}, function (res) {
+      if (res && res.isSubtitleOpen === 'true') {
+        currentValues.subtitleOpen = true;
+        switchToggleButton('#subtitleOpen', true);
+      }
+    });
   });
 }

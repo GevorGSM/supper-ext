@@ -1,0 +1,23 @@
+.subtitleContainer {
+  width: 80vw;
+  min-width: 300px;
+  height: 200px;
+  position: fixed !important;
+  z-index: 5000;
+  bottom: 0;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #09a96e;
+  border: 2px solid #469bab;
+  border-radius: 6px;
+  padding: 18px;
+  font-size: 20px;
+}
+
+.recognisedTextItem {
+  padding: 8px;
+  margin: 8px;
+  background-color: #12b92f;
+  border: 1px solid #2fd37d;
+}

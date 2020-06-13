@@ -21,6 +21,7 @@ export const SETTING_NAMES = [
   SETTING_TYPES.voiceVolume,
   SETTING_TYPES.voiceLang,
   SETTING_TYPES.voiceName,
+  SETTING_TYPES.recognitionLanguage,
 ];
 
 export const PROJECT_PREFIX = 'SUPPER_EXT';
@@ -32,6 +33,8 @@ export const REQUEST_TYPES = {
   screenShot: 'screen_shot',
   formSubmit: 'formSubmit',
   okGoogle: 'okGoogle',
+  getSubtitleState: 'getSubtitleState',
+  toggleSubtitleState: 'toggleSubtitleState',
 };
 
 export const openLastPagesMatcher = /open [0-9]+/gi;

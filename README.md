@@ -57,8 +57,12 @@ for camera we need https protocol, but we open it in popup)
 Read text by selecting and using contextMenu item click.
 Ability to choice language, voice, rate, pitch, volume from Options
 
-
 ---------------
 
 ### OK Google
 Use Speech Recognition to redirect google search
+
+---------------
+
+### Subtitle
+Shows audio subtitles in some draggable block in content

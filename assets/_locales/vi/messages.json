@@ -85,5 +85,8 @@
   },
   "options_ok_google": {
     "message": "OK Google"
+  },
+  "options_open_subtitle": {
+    "message": "Open Subtitle Block"
   }
 }

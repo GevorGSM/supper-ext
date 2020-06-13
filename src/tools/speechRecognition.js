@@ -4,8 +4,8 @@ let isStarted;
 
 export function initRecognition(lang) {
   recognition = new SpeechRecognition();
-  recognition.continuous = true;
-  recognition.interimResults = true;
+  // recognition.continuous = true;
+  // recognition.interimResults = true;
   recognition.lang = lang;
 
   recognition.onresult = function ({ results }) {
