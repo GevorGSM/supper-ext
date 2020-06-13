@@ -88,5 +88,8 @@
   },
   "options_open_subtitle": {
     "message": "Open Subtitle Block"
+  },
+  "translation_languages_heading": {
+    "message": "Translation Language"
   }
 }

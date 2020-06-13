@@ -29,6 +29,7 @@ function initialize(settings, voices) {
       [SETTING_TYPES.partlyScreenShot]: $('[name=partlyScreenShot]:checked').val() === '1',
       [SETTING_TYPES.historyDetect]: $('[name=historyDetect]:checked').val() === '1',
       [SETTING_TYPES.recognitionLanguage]: $('#recognitionLanguages').val(),
+      [SETTING_TYPES.translationLanguage]: $('#translationLanguages').val(),
       [SETTING_TYPES.voiceRate]: Number($('#rate-input').val()),
       [SETTING_TYPES.voiceVolume]: $('#volume').val(),
       [SETTING_TYPES.voicePitch]: $('#pitch').val(),
@@ -49,7 +50,7 @@ function initialize(settings, voices) {
   });
 
   //dirty
-  $('#voices, #languages, #recognitionLanguages, input[name=partlyScreenShot], input[name=historyDetect], input[name=scroller]')
+  $('#voices, #languages, #recognitionLanguages, #translationLanguages, input[name=partlyScreenShot], input[name=historyDetect], input[name=scroller]')
     .change(setDirty);
   $('#rate, #pitch, #volume').on('change', setDirty);
   $('#rate-input').on('input', setDirty);
@@ -75,6 +76,10 @@ function initSpeechInputs(voices) {
       .val(lng)
       .text(lng)
       .appendTo($('#languages'));
+    $('<option>')
+      .val(lng)
+      .text(lng)
+      .appendTo($('#translationLanguages'));
   });
 
   recognitionLangs.forEach((lng) => {
@@ -182,6 +187,7 @@ function setValuesBySetting(settings) {
   $('[name=historyDetect][value=' + (settings[SETTING_TYPES.historyDetect] ? '1' : '0') + ']').prop('checked', true);
   $('[name=partlyScreenShot][value=' + (settings[SETTING_TYPES.partlyScreenShot] ? '1' : '0') + ']').prop('checked', true);
   $('#recognitionLanguages').val(settings[SETTING_TYPES.recognitionLanguage] || defaultTTSConfig.recognitionLanguage);
+  $('#translationLanguages').val(settings[SETTING_TYPES.translationLanguage] || defaultTTSConfig.translationLanguage);
   $('#rate').val(Math.log(settings[SETTING_TYPES.voiceRate] || defaultTTSConfig.rate) / Math.log(3));
   $('#rate-warning').toggle((settings[SETTING_TYPES.voiceRate] || defaultTTSConfig.rate) > 2);
   $('#languages').val(settings[SETTING_TYPES.voiceLang] || defaultTTSConfig.language);

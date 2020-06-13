@@ -135,16 +135,17 @@ export function getSpeech(texts, fromTranslation = false) {
              [SETTING_TYPES.voiceVolume]: volume,
              [SETTING_TYPES.voiceLang]: lang,
              [SETTING_TYPES.voiceName]: voiceName,
+             [SETTING_TYPES.translationLanguage]: translationLanguage,
            }) => {
 
       const options = {
         rate: rate || defaultTTSConfig.rate,
         pitch: +pitch || defaultTTSConfig.pitch,
         volume: +volume || defaultTTSConfig.volume,
-        lang: fromTranslation ? '' : (lang || defaultTTSConfig.language)
+        lang: fromTranslation ? (translationLanguage || defaultTTSConfig.translationLanguage) : (lang || defaultTTSConfig.language)
       };
 
-      return getSpeechVoice(fromTranslation ? '' : voiceName, options.lang)
+      return getSpeechVoice(fromTranslation ? null : voiceName, options.lang)
         .then((voice) => {
           if (!voice) {
             throw new Error(JSON.stringify({code: 'error_no_voice', lang: options.lang}));
@@ -157,12 +158,12 @@ export function getSpeech(texts, fromTranslation = false) {
 
 let activeSpeech;
 
-export function readText(text) {
+export function readText(text, fromTranslation = false, onEnd = null) {
   if (activeSpeech) {
     activeSpeech.stop();
   }
 
-  getSpeech(text.split(/(?:\r?\n){2,}/))
+  getSpeech(text.split(/(?:\r?\n){2,}/), fromTranslation)
     .then((speech) => {
       activeSpeech = speech;
       speech.play();
@@ -172,6 +173,9 @@ export function readText(text) {
           console.error(error);
         } else {
           activeSpeech = null;
+          if (onEnd) {
+            onEnd();
+          }
         }
       };
     });

@@ -7,6 +7,7 @@ import {
   brApi
 } from '../helpers/constants';
 import { getSettings, updateSettings } from '../helpers/utils';
+import { translateText } from '../tools/translator';
 import { readText } from '../tools/tts';
 
 brApi.runtime.onInstalled.addListener(function() {
@@ -19,7 +20,14 @@ brApi.runtime.onInstalled.addListener(function() {
 
 brApi.contextMenus.onClicked.addListener(function(info, tab) {
   if (info.menuItemId === 'read-selection') {
-    readText(info.selectionText)
+    readText(info.selectionText, false, () => {
+      translateText(info.selectionText)
+        .then((res) => {
+          if (res) {
+            readText(res, true);
+          }
+        })
+    });
   }
 });
 
@@ -71,6 +79,14 @@ function onMessage(message, sender, sendResponse) {
 
       brApi.storage.local.set({ [HISTORY_KEY]: history })
     });
+  } else if (message.type === REQUEST_TYPES.translate) {
+    translateText(message.data)
+      .then((translation) => {
+        if (translation) {
+          sendResponse({ translation });
+        }
+      });
+    return true;
   }
 }
 

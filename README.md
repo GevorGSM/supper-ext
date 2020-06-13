@@ -66,3 +66,8 @@ Use Speech Recognition to redirect google search
 
 ### Subtitle
 Shows audio subtitles in some draggable block in content
+
+---------------
+
+### translation
+Translate text after context menu reading action, also ability to translate each text in subtitle block
