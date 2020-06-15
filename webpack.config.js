@@ -11,6 +11,7 @@ module.exports = (env, argv) => ({
     newTab: './src/newTab',
     history: './src/tools/history',
     events: './src/background/events',
+    tabs: './src/background/tabs',
   },
   devtool: argv.mode === 'development' ? 'source-map' : '',
   output: {

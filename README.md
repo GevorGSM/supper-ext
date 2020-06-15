@@ -76,3 +76,8 @@ Translate text after context menu reading action, also ability to translate each
 
 ### Video Recorder
 Ability to record video from your cameras and ability to screen sharing.
+
+---------------
+
+### Notifier
+Notify user about spending more then 1 hour in some domain

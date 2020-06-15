@@ -30,12 +30,14 @@
     "contextMenus",
     "https://support.lsdsoftware.com/",
     "videoCapture",
-    "audioCapture"
+    "audioCapture",
+    "notifications"
   ],
   "background": {
     "scripts": [
       "browser-polyfill.js",
-      "events.js"
+      "events.js",
+      "tabs.js"
     ],
     "persistent": false
   },
