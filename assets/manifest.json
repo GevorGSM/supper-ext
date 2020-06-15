@@ -78,7 +78,8 @@
         "<all_urls>"
       ],
       "css": [
-        "css/content.css"
+        "css/content.css",
+        "css/videoRecorder.css"
       ],
       "js": [
         "browser-polyfill.js",

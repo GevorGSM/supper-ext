@@ -89,6 +89,9 @@
   "options_open_subtitle": {
     "message": "Open Subtitle Block"
   },
+  "options_open_video_recorder": {
+    "message": "Open VideoRecorder Block"
+  },
   "translation_languages_heading": {
     "message": "Translation Language"
   }

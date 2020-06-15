@@ -19,9 +19,11 @@ function initialize(settings) {
     currentPartlyScreenShotValue: settings[SETTING_TYPES.partlyScreenShot],
     currentHistoryDetectValue: settings[SETTING_TYPES.historyDetect],
     subtitleOpen: false,
+    videoRecorderOpen: false,
   };
 
   initSubtitle(currentValues);
+  initVideoRecorder(currentValues);
   let isQrGeneratorOpen = false;
   let isQrScannerOpen = false;
   $('#qrBlock').hide();
@@ -96,6 +98,19 @@ function initialize(settings) {
     });
   });
 
+  $('#videoRecorderOpen').click(() => {
+    currentValues.videoRecorderOpen = !currentValues.videoRecorderOpen;
+    switchToggleButton('#videoRecorderOpen', currentValues.videoRecorderOpen);
+
+    brApi.tabs.query({ active: true, windowId: brApi.windows.WINDOW_ID_CURRENT }, function(tabs) {
+      const message = {
+        type: REQUEST_TYPES.toggleVideoRecorderState,
+        data: null,
+      };
+      brApi.tabs.sendMessage(tabs[0].id, message);
+    });
+  });
+
   addClickListenerForToggle('#scroller', currentValues, 'currentScrollerValue', SETTING_TYPES.scroller);
   addClickListenerForToggle('#partlyScreenShot', currentValues, 'currentPartlyScreenShotValue', SETTING_TYPES.partlyScreenShot);
   addClickListenerForToggle('#historyDetect', currentValues, 'currentHistoryDetectValue', SETTING_TYPES.historyDetect);
@@ -103,6 +118,7 @@ function initialize(settings) {
   switchToggleButton('#scroller', settings[SETTING_TYPES.scroller]);
   switchToggleButton('#partlyScreenShot', settings[SETTING_TYPES.partlyScreenShot]);
   switchToggleButton('#historyDetect', settings[SETTING_TYPES.historyDetect]);
+  switchToggleButton('#videoRecorderOpen', currentValues.videoRecorderOpen);
   switchToggleButton('#subtitleOpen', currentValues.subtitleOpen);
   switchToggleButton('#qrGenerator', isQrGeneratorOpen);
   switchToggleButton('#qrScanner', isQrScannerOpen);
@@ -153,6 +169,23 @@ function initSubtitle(currentValues) {
       if (res && res.isSubtitleOpen === 'true') {
         currentValues.subtitleOpen = true;
         switchToggleButton('#subtitleOpen', true);
+      }
+    });
+  });
+}
+
+function initVideoRecorder(currentValues) {
+  brApi.tabs.query({ active: true, windowId: brApi.windows.WINDOW_ID_CURRENT }, function(tabs) {
+    const message = {
+      type: REQUEST_TYPES.getVideoRecordingState,
+      data: null,
+    };
+
+    // for chrome only, with firefox we need to use promise.then
+    brApi.tabs.sendMessage(tabs[0].id, message, {}, function (res) {
+      if (res && res.isVideoRecorderOpen === 'true') {
+        currentValues.videoRecorderOpen = true;
+        switchToggleButton('#videoRecorderOpen', true);
       }
     });
   });

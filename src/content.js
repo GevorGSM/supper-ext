@@ -1,4 +1,5 @@
 import { downloadScreenShot, startPartlyScreenShotMode, updateOutlineMode } from './tools/screenShot';
+import { getVideoRecorderOpenState, toggleVideoRecord } from './tools/videoRecorder';
 import { getSubtitleOpenState, toggleRecognition } from './tools/subtitle';
 import { brApi, REQUEST_TYPES, SETTING_TYPES } from './helpers/constants';
 import { initRecognition, okGoogle } from './tools/speechRecognition';
@@ -39,8 +40,14 @@ function onMessage(message, sender, sendResponse) {
     sendResponse({ isSubtitleOpen: `${getSubtitleOpenState()}` });
     return true;
     // for firefox return Promise.resolve({ isSubtitleOpen: getSubtitleOpenState() })
+  }  else if (message.type === REQUEST_TYPES.getVideoRecordingState) {
+    sendResponse({ isVideoRecorderOpen: `${getVideoRecorderOpenState()}` });
+    return true;
+    // for firefox return Promise.resolve({ isSubtitleOpen: getSubtitleOpenState() })
   } else if (message.type === REQUEST_TYPES.toggleSubtitleState) {
     toggleRecognition(message.data);
+  } else if (message.type === REQUEST_TYPES.toggleVideoRecorderState) {
+    toggleVideoRecord();
   }
 }
 

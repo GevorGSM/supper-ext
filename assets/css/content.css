@@ -10,6 +10,7 @@
   transform: translate(-50%, -50%);
   background-color: #09a96e;
   border: 2px solid #469bab;
+  color: black;
   border-radius: 6px;
   padding: 18px;
   font-size: 20px;
@@ -27,6 +28,7 @@
   justify-content: flex-start;
   border-bottom: 1px solid #25d7c1;
   padding-bottom: 12px;
+  cursor: move;
 }
 
 .extBtn {
@@ -51,5 +53,11 @@
 
 .recognisedTextTranslation {
   background-color: #e7ff19;
+  margin-top: 10px;
   padding: 6px;
+}
+
+.subtitleItemsContainer {
+  overflow: auto;
+  max-height: 220px;
 }

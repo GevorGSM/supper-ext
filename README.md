@@ -69,5 +69,10 @@ Shows audio subtitles in some draggable block in content
 
 ---------------
 
-### translation
+### Translation
 Translate text after context menu reading action, also ability to translate each text in subtitle block
+
+---------------
+
+### Video Recorder
+Ability to record video from your cameras and ability to screen sharing.

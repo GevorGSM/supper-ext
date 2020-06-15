@@ -97,9 +97,9 @@ export function parseLang(lang) {
   };
 }
 
-export function dragElement(elmnt) {
+export function dragElement(element, container) {
   let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-  elmnt.onmousedown = dragMouseDown;
+  element.onmousedown = dragMouseDown;
 
   function dragMouseDown(e) {
     e = e || window.event;
@@ -121,8 +121,8 @@ export function dragElement(elmnt) {
     pos3 = e.clientX;
     pos4 = e.clientY;
     // set the element's new position:
-    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+    container.style.top = (container.offsetTop - pos2) + "px";
+    container.style.left = (container.offsetLeft - pos1) + "px";
   }
 
   function closeDragElement() {
@@ -130,4 +130,14 @@ export function dragElement(elmnt) {
     document.onmouseup = null;
     document.onmousemove = null;
   }
+}
+
+export function downloadFile(src, name = 'download') {
+  const link = document.createElement('a');
+  link.href = src;
+  link.setAttribute('download', name);
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  window.URL.revokeObjectURL(src);
 }

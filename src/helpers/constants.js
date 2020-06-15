@@ -36,7 +36,9 @@ export const REQUEST_TYPES = {
   formSubmit: 'formSubmit',
   okGoogle: 'okGoogle',
   getSubtitleState: 'getSubtitleState',
+  getVideoRecordingState: 'getVideoRecordingState',
   toggleSubtitleState: 'toggleSubtitleState',
+  toggleVideoRecorderState: 'toggleVideoRecorderState',
   translate: 'translate',
 };
 

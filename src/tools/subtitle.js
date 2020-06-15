@@ -7,6 +7,7 @@ window.SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecogn
 
 const emptyStateText = 'Speak and se result in this box';
 let isRecognitionInited = false;
+let subtitleItemsContainer;
 let subtitleContainer;
 let recognition;
 let isStarted;
@@ -22,13 +23,13 @@ function initRecognition(lang) {
     if (results[0].isFinal) {
       const text = results[0][0].transcript;
 
-      if (subtitleContainer.find('.recognisedTextItem').length === 0) {
+      if (subtitleItemsContainer.find('.recognisedTextItem').length === 0) {
         const header = subtitleContainer.find('.subtitleHeader').text('');
         const resetBtn = $('<div class="clearRecognisedBtn extBtn">').text('Clear').appendTo(header);
 
         resetBtn.click(() => {
           header.text(emptyStateText);
-          subtitleContainer.find('.recognisedTextItem').fadeOut(300, function(){ $(this).remove();})
+          subtitleItemsContainer.find('.recognisedTextItem').fadeOut(300, function(){ $(this).remove();})
         });
       }
 
@@ -57,10 +58,12 @@ function initRecognition(lang) {
         });
       });
 
-      itemContainer.hide().appendTo(subtitleContainer).show('slow');
+      itemContainer.hide().appendTo(subtitleItemsContainer).show('slow', () => {
+        subtitleItemsContainer.scrollTop(subtitleItemsContainer[0].scrollHeight);
+      });
 
-      if (subtitleContainer.find('.recognisedTextItem').length > 3) {
-        subtitleContainer.find('.recognisedTextItem').first().fadeOut(300, function(){ $(this).remove();});
+      if (subtitleItemsContainer.find('.recognisedTextItem').length > 3) {
+        subtitleItemsContainer.find('.recognisedTextItem').first().fadeOut(300, function(){ $(this).remove();});
       }
     }
   };
@@ -94,8 +97,9 @@ export function toggleRecognition(lang) {
 
 function openSubtitles(lang) {
   subtitleContainer = $('<div class="subtitleContainer">').appendTo($('body'));
-  $('<div class="subtitleHeader">').text(emptyStateText).appendTo(subtitleContainer);
-  dragElement(subtitleContainer[0]);
+  const header = $('<div class="subtitleHeader">').text(emptyStateText).appendTo(subtitleContainer);
+  subtitleItemsContainer = $('<div class="subtitleItemsContainer">').appendTo(subtitleContainer);
+  dragElement(header[0], subtitleContainer[0]);
 
   if (!isRecognitionInited) {
     initRecognition(lang)
