@@ -39,10 +39,10 @@ export const REQUEST_TYPES = {
   screenShot: 'screen_shot',
   formSubmit: 'formSubmit',
   okGoogle: 'okGoogle',
-  getSubtitleState: 'getSubtitleState',
-  getVideoRecordingState: 'getVideoRecordingState',
+  getInitialData: 'getInitialData',
   toggleSubtitleState: 'toggleSubtitleState',
   toggleVideoRecorderState: 'toggleVideoRecorderState',
+  toggleCodeSandbox: 'toggleCodeSandbox',
   translate: 'translate',
 };
 

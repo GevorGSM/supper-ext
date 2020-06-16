@@ -21,10 +21,11 @@ function initialize(settings) {
     currentHistoryDetectValue: settings[SETTING_TYPES.historyDetect],
     subtitleOpen: false,
     videoRecorderOpen: false,
+    codeSandboxOpen: false
   };
 
-  initSubtitle(currentValues);
-  initVideoRecorder(currentValues);
+  initDataFromContent(currentValues);
+
   let isQrGeneratorOpen = false;
   let isQrScannerOpen = false;
   $('#qrBlock').hide();
@@ -114,6 +115,19 @@ function initialize(settings) {
     });
   });
 
+  $('#codeSandbox').click(() => {
+    currentValues.codeSandboxOpen = !currentValues.codeSandboxOpen;
+    switchToggleButton('#codeSandbox', currentValues.codeSandboxOpen);
+
+    brApi.tabs.query({ active: true, windowId: brApi.windows.WINDOW_ID_CURRENT }, function(tabs) {
+      const message = {
+        type: REQUEST_TYPES.toggleCodeSandbox,
+        data: null,
+      };
+      brApi.tabs.sendMessage(tabs[0].id, message);
+    });
+  });
+
   addClickListenerForToggle('#scroller', currentValues, 'currentScrollerValue', SETTING_TYPES.scroller);
   addClickListenerForToggle('#clipboardData', currentValues, 'currentClipboardData', SETTING_TYPES.clipboardData);
   addClickListenerForToggle('#partlyScreenShot', currentValues, 'currentPartlyScreenShotValue', SETTING_TYPES.partlyScreenShot);
@@ -124,6 +138,7 @@ function initialize(settings) {
   switchToggleButton('#partlyScreenShot', settings[SETTING_TYPES.partlyScreenShot]);
   switchToggleButton('#historyDetect', settings[SETTING_TYPES.historyDetect]);
   switchToggleButton('#videoRecorderOpen', currentValues.videoRecorderOpen);
+  switchToggleButton('#codeSandbox', currentValues.codeSandboxOpen);
   switchToggleButton('#subtitleOpen', currentValues.subtitleOpen);
   switchToggleButton('#qrGenerator', isQrGeneratorOpen);
   switchToggleButton('#qrScanner', isQrScannerOpen);
@@ -162,35 +177,30 @@ function addClickListenerForToggle(selector, currentValues, key, settingType) {
   });
 }
 
-function initSubtitle(currentValues) {
+function initDataFromContent(currentValues) {
   brApi.tabs.query({ active: true, windowId: brApi.windows.WINDOW_ID_CURRENT }, function(tabs) {
     const message = {
-      type: REQUEST_TYPES.getSubtitleState,
+      type: REQUEST_TYPES.getInitialData,
       data: null,
     };
 
     // for chrome only, with firefox we need to use promise.then
     brApi.tabs.sendMessage(tabs[0].id, message, {}, function (res) {
-      if (res && res.isSubtitleOpen === 'true') {
-        currentValues.subtitleOpen = true;
-        switchToggleButton('#subtitleOpen', true);
-      }
-    });
-  });
-}
+      if (res) {
+        if (res && res.isSubtitleOpen === 'true') {
+          currentValues.subtitleOpen = true;
+          switchToggleButton('#subtitleOpen', true);
+        }
 
-function initVideoRecorder(currentValues) {
-  brApi.tabs.query({ active: true, windowId: brApi.windows.WINDOW_ID_CURRENT }, function(tabs) {
-    const message = {
-      type: REQUEST_TYPES.getVideoRecordingState,
-      data: null,
-    };
+        if (res.isVideoRecorderOpen === 'true') {
+          currentValues.videoRecorderOpen = true;
+          switchToggleButton('#videoRecorderOpen', true);
+        }
 
-    // for chrome only, with firefox we need to use promise.then
-    brApi.tabs.sendMessage(tabs[0].id, message, {}, function (res) {
-      if (res && res.isVideoRecorderOpen === 'true') {
-        currentValues.videoRecorderOpen = true;
-        switchToggleButton('#videoRecorderOpen', true);
+        if (res.isCodeSandboxOpen === 'true') {
+          currentValues.codeSandboxOpen = true;
+          switchToggleButton('#codeSandbox', true);
+        }
       }
     });
   });

@@ -86,3 +86,8 @@ Notify user about spending more then 1 hour in some domain
 
 ### Clipboard Data
 Ability to save copied and cut text and show in separate tab
+
+---------------
+
+### Sandbox
+Html, css, js code playground

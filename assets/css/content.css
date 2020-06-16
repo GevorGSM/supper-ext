@@ -61,3 +61,21 @@
   overflow: auto;
   max-height: 220px;
 }
+
+.closeBtn {
+  background-color: #FF8C00;
+  color: black;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  transform: translate(50%, -50%);
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+  line-height: 0.9;
+  box-sizing: content-box;
+}

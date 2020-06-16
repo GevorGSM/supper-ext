@@ -95,6 +95,9 @@
   "options_open_video_recorder": {
     "message": "Open VideoRecorder Block"
   },
+  "options_open_code_sandbox": {
+    "message": "Open SandBox"
+  },
   "translation_languages_heading": {
     "message": "Translation Language"
   }

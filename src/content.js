@@ -1,5 +1,6 @@
 import { downloadScreenShot, startPartlyScreenShotMode, updateOutlineMode } from './tools/screenShot';
 import { getVideoRecorderOpenState, toggleVideoRecord } from './tools/videoRecorder';
+import { getCodeSandboxOpenState, toggleCodeSandbox } from './tools/codeSandbox';
 import { getSubtitleOpenState, toggleRecognition } from './tools/subtitle';
 import { brApi, REQUEST_TYPES, SETTING_TYPES } from './helpers/constants';
 import { initRecognition, okGoogle } from './tools/speechRecognition';
@@ -39,18 +40,20 @@ function onMessage(message, sender, sendResponse) {
     }
 
     okGoogle();
-  } else if (message.type === REQUEST_TYPES.getSubtitleState) {
-    sendResponse({ isSubtitleOpen: `${getSubtitleOpenState()}` });
-    return true;
-    // for firefox return Promise.resolve({ isSubtitleOpen: getSubtitleOpenState() })
-  }  else if (message.type === REQUEST_TYPES.getVideoRecordingState) {
-    sendResponse({ isVideoRecorderOpen: `${getVideoRecorderOpenState()}` });
+  } else if (message.type === REQUEST_TYPES.getInitialData) {
+    sendResponse({
+      isSubtitleOpen: `${getSubtitleOpenState()}`,
+      isVideoRecorderOpen: `${getVideoRecorderOpenState()}`,
+      isCodeSandboxOpen: `${getCodeSandboxOpenState()}`,
+    });
     return true;
     // for firefox return Promise.resolve({ isSubtitleOpen: getSubtitleOpenState() })
   } else if (message.type === REQUEST_TYPES.toggleSubtitleState) {
     toggleRecognition(message.data);
   } else if (message.type === REQUEST_TYPES.toggleVideoRecorderState) {
     toggleVideoRecord();
+  } else if (message.type === REQUEST_TYPES.toggleCodeSandbox) {
+    toggleCodeSandbox();
   }
 }
 

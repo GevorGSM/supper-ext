@@ -81,7 +81,8 @@
       ],
       "css": [
         "css/content.css",
-        "css/videoRecorder.css"
+        "css/videoRecorder.css",
+        "css/codeSandbox.css"
       ],
       "js": [
         "browser-polyfill.js",
