@@ -81,3 +81,8 @@ Ability to record video from your cameras and ability to screen sharing.
 
 ### Notifier
 Notify user about spending more then 1 hour in some domain
+
+---------------
+
+### Clipboard Data
+Ability to save copied and cut text and show in separate tab

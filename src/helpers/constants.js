@@ -11,6 +11,7 @@ export const SETTING_TYPES = {
   voiceName: 'VOICE_NAME',
   recognitionLanguage: 'RECOGNITION_LANGUAGE',
   translationLanguage: 'TRANSLATION_LANGUAGE',
+  clipboardData: 'CLIPBOARD_DATA'
 };
 
 export const SETTING_NAMES = [
@@ -24,11 +25,14 @@ export const SETTING_NAMES = [
   SETTING_TYPES.voiceName,
   SETTING_TYPES.recognitionLanguage,
   SETTING_TYPES.translationLanguage,
+  SETTING_TYPES.clipboardData,
 ];
 
 export const PROJECT_PREFIX = 'SUPPER_EXT';
 
 export const HISTORY_KEY = `${PROJECT_PREFIX}_history`;
+
+export const CLIPBOARD_DATA_KEY = `${PROJECT_PREFIX}_clipboardData`;
 
 export const REQUEST_TYPES = {
   settingsChange: 'settings_change',

@@ -16,6 +16,7 @@ function initialize(settings) {
   brApi.runtime.onMessage.addListener(onMessage);
   const currentValues = {
     currentScrollerValue: settings[SETTING_TYPES.scroller],
+    currentClipboardData: settings[SETTING_TYPES.clipboardData],
     currentPartlyScreenShotValue: settings[SETTING_TYPES.partlyScreenShot],
     currentHistoryDetectValue: settings[SETTING_TYPES.historyDetect],
     subtitleOpen: false,
@@ -38,6 +39,8 @@ function initialize(settings) {
         switchToggleButton('#partlyScreenShot', value);
       } else if (SETTING_TYPES.historyDetect) {
         switchToggleButton('#historyDetect', value);
+      } else if (settingName === SETTING_TYPES.clipboardData) {
+        switchToggleButton('#clipboardData', value);
       }
     }
   }
@@ -112,10 +115,12 @@ function initialize(settings) {
   });
 
   addClickListenerForToggle('#scroller', currentValues, 'currentScrollerValue', SETTING_TYPES.scroller);
+  addClickListenerForToggle('#clipboardData', currentValues, 'currentClipboardData', SETTING_TYPES.clipboardData);
   addClickListenerForToggle('#partlyScreenShot', currentValues, 'currentPartlyScreenShotValue', SETTING_TYPES.partlyScreenShot);
   addClickListenerForToggle('#historyDetect', currentValues, 'currentHistoryDetectValue', SETTING_TYPES.historyDetect);
 
   switchToggleButton('#scroller', settings[SETTING_TYPES.scroller]);
+  switchToggleButton('#clipboardData', settings[SETTING_TYPES.clipboardData]);
   switchToggleButton('#partlyScreenShot', settings[SETTING_TYPES.partlyScreenShot]);
   switchToggleButton('#historyDetect', settings[SETTING_TYPES.historyDetect]);
   switchToggleButton('#videoRecorderOpen', currentValues.videoRecorderOpen);

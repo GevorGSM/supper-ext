@@ -26,6 +26,7 @@ function initialize(settings, voices) {
   saveBtn.click(function() {
     updateSettings({
       [SETTING_TYPES.scroller]: $('[name=scroller]:checked').val() === '1',
+      [SETTING_TYPES.clipboardData]: $('[name=clipboardData]:checked').val() === '1',
       [SETTING_TYPES.partlyScreenShot]: $('[name=partlyScreenShot]:checked').val() === '1',
       [SETTING_TYPES.historyDetect]: $('[name=historyDetect]:checked').val() === '1',
       [SETTING_TYPES.recognitionLanguage]: $('#recognitionLanguages').val(),
@@ -50,8 +51,9 @@ function initialize(settings, voices) {
   });
 
   //dirty
-  $('#voices, #languages, #recognitionLanguages, #translationLanguages, input[name=partlyScreenShot], input[name=historyDetect], input[name=scroller]')
-    .change(setDirty);
+  $(`#voices, #languages, #recognitionLanguages, #translationLanguages, input[name=partlyScreenShot],
+    input[name=historyDetect], input[name=scroller], input[name=clipboardData]
+  `).change(setDirty);
   $('#rate, #pitch, #volume').on('change', setDirty);
   $('#rate-input').on('input', setDirty);
 
@@ -184,6 +186,8 @@ function voiceSorter(a,b) {
 function setValuesBySetting(settings) {
   $('[name=scroller], [name=partlyScreenShot], [name=historyDetect]').prop('checked', false);
   $('[name=scroller][value=' + (settings[SETTING_TYPES.scroller] ? '1' : '0') + ']').prop('checked', true);
+  $('[name=clipboardData], [name=partlyScreenShot], [name=historyDetect]').prop('checked', false);
+  $('[name=clipboardData][value=' + (settings[SETTING_TYPES.clipboardData] ? '1' : '0') + ']').prop('checked', true);
   $('[name=historyDetect][value=' + (settings[SETTING_TYPES.historyDetect] ? '1' : '0') + ']').prop('checked', true);
   $('[name=partlyScreenShot][value=' + (settings[SETTING_TYPES.partlyScreenShot] ? '1' : '0') + ']').prop('checked', true);
   $('#recognitionLanguages').val(settings[SETTING_TYPES.recognitionLanguage] || defaultTTSConfig.recognitionLanguage);

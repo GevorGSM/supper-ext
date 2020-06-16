@@ -26,6 +26,9 @@
   "options_activate_scroller": {
     "message": "Scroller"
   },
+  "options_activate_clipboard_data": {
+    "message": "Clipboard Data (on/off)"
+  },
   "options_partly_screen_shot": {
     "message": "Outline Blocks and ScreenShot them by DoubleClick (on/off)"
   },

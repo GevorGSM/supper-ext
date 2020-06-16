@@ -4,6 +4,7 @@ import { getSubtitleOpenState, toggleRecognition } from './tools/subtitle';
 import { brApi, REQUEST_TYPES, SETTING_TYPES } from './helpers/constants';
 import { initRecognition, okGoogle } from './tools/speechRecognition';
 import { startScroller, stopScroller } from './tools/scroller';
+import { toggleClipboardData } from './tools/clipboardData';
 import { getSettings } from './helpers/utils';
 
 brApi.runtime.onMessage.addListener(onMessage);
@@ -26,6 +27,8 @@ function onMessage(message, sender, sendResponse) {
       }
     } else if (settingName === SETTING_TYPES.partlyScreenShot) {
       updateOutlineMode(value)
+    } else if (settingName === SETTING_TYPES.clipboardData) {
+      toggleClipboardData(value);
     }
   } else if (message.type === REQUEST_TYPES.screenShot) {
     downloadScreenShot(document.body);
@@ -59,10 +62,12 @@ getSettings()
 function initialize({
   [SETTING_TYPES.scroller]: scroller,
   [SETTING_TYPES.partlyScreenShot]: partlyScreenShot,
+  [SETTING_TYPES.clipboardData]: clipboardData,
 } = {}) {
   if (scroller) {
     startScroller();
   }
 
+  toggleClipboardData(clipboardData);
   startPartlyScreenShotMode(partlyScreenShot);
 }
