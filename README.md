@@ -7,6 +7,23 @@
 
 ---------------
 
+##Usage
+
+> Clone repository
+
+> Execute `npm install`
+
+> Execute `npm run build`
+
+> Go to chrome browser and open `chrome://extensions/`
+
+> Click `Load unpacked` button and select project dist folder
+
+> Enjoy :shipit: :fire: :tada: :beer: :rocket:
+---------------
+
+## Tools
+
 ### Scroller
 This feature allow to save scroll position related to url,
  and each time when you come to that url,
