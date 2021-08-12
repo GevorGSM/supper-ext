@@ -22,7 +22,7 @@
     "google-translate-api-browser": "^1.1.71",
     "html2canvas": "^1.0.0-rc.5",
     "jquery": "3.5.0",
-    "path-parse": "^1.0.5",
+    "path-parse": "^1.0.7",
     "qr-scanner": "^1.1.1",
     "qrcode": "^1.4.4",
     "style-loader": "^0.23.1",
